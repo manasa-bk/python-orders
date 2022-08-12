@@ -18,7 +18,7 @@ spec:
         app: python
     spec:
       containers:
-      - image: ECR_REPO:BUILD_TAG_SUFFIX-GIT_HASH
+      - image: accountid.dkr.ecr.us-east-1.amazonaws.com/docker:BUILD_TAG_SUFFIX-GIT_HASH
         name: docker
         resources: {}
 status: {}
