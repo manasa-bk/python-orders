@@ -19,15 +19,13 @@ pipeline {
       '''
       
       sh """
-      repo=
       sed -i \'s/BUILD_TAG_SUFFIX/$BUILD_TAG_SUFFIX/g\' python.yaml
       sed -i \'s/GIT_HASH/$GIT_HASH/g\' python.yaml
       sed -i \'s/accountid/$ACCOUNT_ID/g\' python.yaml
       """
       sh '''
-      cat python.yaml
-      kubectl apply -f python.yaml
-      kubectl apply -f pythonsvc.yaml
+      kubectl apply -f python.yaml -n $GIT_BRANCH
+      kubectl apply -f pythonsvc.yaml -n $GIT_BRANCH
       '''    
       }
     }
